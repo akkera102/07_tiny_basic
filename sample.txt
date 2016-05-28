@@ -1,0 +1,48 @@
++++ hello.bas 
+
+10 PRINT "HELLO ARDUBOY"
+
+
+
+
++++ zundoko.bas
+
+10 R=RND(2)-1; IF R PRINT "ZUN ",; GOTO 30
+20 PRINT "DOKO ",
+30 N=16*R+N/2; IF N#15 GOTO 10
+40 PRINT "KI.YO.SHI!"
+
+
+
+
+++++ fizzbuzz.bas
+
+10 FOR I=1 TO 100
+20 F=I/3*3=I; B=I/5*5=I
+30 IF F PRINT "FIZZ",
+40 IF B PRINT "BUZZ",
+50 IF F+B=0 PRINT I,
+60 PRINT
+70 NEXT I
+
+
+
+
+++++ line.bas
+
+10 CLS
+20 FOR I=0 TO 63
+30 PSET I,I
+40 NEXT I
+
+
+
+
+++++ test.bas
+
+10 FOR I=2 TO -2 STEP -1; GOSUB 100; NEXT I
+20 STOP
+100 REM SUBROUTINE
+110 PRINT ABS(I); RETURN
+
+
