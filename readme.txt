@@ -20,6 +20,10 @@ Tiny BASIC grammar see wikipedia or source code.
 https://en.wikipedia.org/wiki/Tiny_BASIC
 
 
+## Original
+simple source code. thank you!
+https://github.com/vintagechips/ttbasic_win
+
 
 ## ToDo
 INPUT order.
