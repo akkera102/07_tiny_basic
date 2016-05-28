@@ -15,8 +15,7 @@ Request : Arduino IDE 1.6.x
 5. input it after connect.
 
 
-## Manual
-Tiny BASIC grammar see wikipedia or source code.
+## Manual(BASIC grammar)
 https://en.wikipedia.org/wiki/Tiny_BASIC
 
 
