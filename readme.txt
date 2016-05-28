@@ -12,7 +12,7 @@ Request : Arduino IDE 1.6.x
 2. pls edit test.bat(windows) or test.sh(osx) for your computer(must change COM port number)
 3. execute test.bat
 4. this program need Serial Monitor. i tested Tera Term. it is famous in Japan.
-5. input it after connect.
+5. after connect, input keyboard.
 
 
 ## Manual(BASIC grammar)
