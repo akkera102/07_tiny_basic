@@ -43,11 +43,6 @@ bool  _IsDigit(char c);
 void  _SystemError(const char* f, ...);
 
 
-// アステロイド用
-s16   _MoveFx(s16 fx, s16 fmx);
-s16   _MoveFy(s16 fy, s16 fmy);
-
-
 #ifdef __cplusplus
 }
 #endif
