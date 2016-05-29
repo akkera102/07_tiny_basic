@@ -36,6 +36,7 @@ etc             : Visual Studio 2015 C#
 
 ## History
 v1.01 2016/05/29    fix RUN, REM, RND, NEW, PSET, SIZE.
+                    fix input bug after RUN.
                     variable and array size s8 -> s16.
                     add sample code. thanks fuopy!
 

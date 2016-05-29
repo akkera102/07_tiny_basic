@@ -377,6 +377,7 @@ void BasExecAdr(void)
 		return;
 	}
 
+
 	s16 no = BasGetLineNo(Bas.codeBuf);
 	u8* p  = BasGetListPointer(no);
 
@@ -642,7 +643,7 @@ void BasExecError(void)
 {
 	BasSerialWriteNewLine();
 
-	if(BasIsRunList() == TRUE)
+	if(Bas.act == BAS_EXEC_RUN && BasIsRunList() == TRUE)
 	{
 		BasSerialWriteStr((char*)"LINE:");
 		BasSerialWriteNum(BasGetLineNo(Bas.pLine), 0);
