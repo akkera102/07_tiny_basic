@@ -359,9 +359,7 @@ void BasExecLex(void)
 		// VAR
 		if(BasIsAlpha(*p) == TRUE)
 		{
-			BasAddCode(BAS_CODE_VAR);
-			BasAddCode(*p++ - 'A');
-
+			p = BasAddCodeVar(p);
 			continue;
 		}
 
@@ -378,9 +376,6 @@ void BasExecAdr(void)
 		Bas.error = BAS_ERROR_LBUFOF;
 		return;
 	}
-
-	Bas.listLen += Bas.codeLen;
-
 
 	s16 no = BasGetLineNo(Bas.codeBuf);
 	u8* p  = BasGetListPointer(no);
@@ -440,6 +435,7 @@ void BasExecAdr(void)
 		*p1++ = *p2++;
 	}
 
+	Bas.listLen += Bas.codeLen;
 	Bas.act = BAS_EXEC_RDY;
 }
 //---------------------------------------------------------------------------
@@ -459,6 +455,7 @@ void BasExecCmd(void)
 		}
 
 		BasInit();
+		Bas.act = BAS_EXEC_OK;
 		break;
 
 	case BAS_CODE_LIST:
@@ -494,6 +491,20 @@ void BasExecCmd(void)
 		break;
 
 	case BAS_CODE_RUN:
+		if(Bas.codeBuf[1] != BAS_CODE_EOL)
+		{
+			Bas.error = BAS_ERROR_SYNTAX;
+
+			return;
+		}
+
+		if(Bas.listLen == 0)
+		{
+			Bas.act = BAS_EXEC_OK;
+
+			return;
+		}
+
 		Bas.forIdx   = 0;
 		Bas.gosubIdx = 0;
 
@@ -859,7 +870,7 @@ void BasCmdVar(void)
 		return;
 	}
 
-	Bas.var[idx] = (s8)val;
+	Bas.var[idx] = val;
 }
 //---------------------------------------------------------------------------
 void BasCmdArray(void)
@@ -890,7 +901,7 @@ void BasCmdArray(void)
 		return;
 	}
 
-	Bas.array[idx] = (s8)val;
+	Bas.array[idx] = val;
 }
 //---------------------------------------------------------------------------
 void BasCmdLet(void)
@@ -988,7 +999,7 @@ void BasCmdCls(void)
 void BasCmdPset(void)
 {
 	// x
-	s8 x = BasCalcCond();
+	s16 x = BasCalcCond();
 
 	if(BasIsError() == TRUE)
 	{
@@ -1003,14 +1014,29 @@ void BasCmdPset(void)
 	}
 
 	// y
-	s8 y = BasCalcCond();
+	s16 y = BasCalcCond();
 
 	if(BasIsError() == TRUE)
 	{
 		return;
 	}
 
-	OledDrawDot(x, y);
+	// ,
+	if(*Bas.pCur++ != BAS_CODE_COMMA)
+	{
+		Bas.error = BAS_ERROR_SYNTAX;
+		return;
+	}
+
+	// col
+	s16 col = BasCalcCond();
+
+	if(BasIsError() == TRUE)
+	{
+		return;
+	}
+
+	OledDrawDot(x, y, col);
 }
 //---------------------------------------------------------------------------
 s16 BasCalcCond(void)
@@ -1259,6 +1285,16 @@ s16 BasCalcParam(void)
 //---------------------------------------------------------------------------
 s16 BasCalcRnd(s16 val)
 {
+	if(val == 0)
+	{
+		return 0;
+	}
+
+	if(val < 0)
+	{
+		val *= -1;
+	}
+
 	return Rnd(val) + 1;
 }
 //---------------------------------------------------------------------------
@@ -1556,18 +1592,19 @@ u8* BasAddCodeCmd(u8* p)
 
 	if(cmd == BAS_CODE_REM)
 	{
-		p = BasSkipSpace(p);
-		u8 len;
+		u8 i;
 
-		for(len=0; *p != '\0'; len++)
+		p = BasSkipSpace(p);
+
+		for(i=0; p[i] != '\0'; i++)
 		{
-			p++;
+			// EMPTY
 		}
 
-		BasAddCode(len);
-		BasAddCode2(p, len);
+		BasAddCode(i);
+		BasAddCode2(p, i);
 
-		p += len;
+		p += i;
 	}
 
 	return p;
@@ -1601,6 +1638,7 @@ End:
 //---------------------------------------------------------------------------
 u8* BasAddCodeStr(u8* p)
 {
+	// Skip " or '
 	p++;
 
 	u8  i;
@@ -1622,6 +1660,14 @@ u8* BasAddCodeStr(u8* p)
 	{
 		p++; 
 	}
+
+	return p;
+}
+//---------------------------------------------------------------------------
+u8* BasAddCodeVar(u8* p)
+{
+	BasAddCode(BAS_CODE_VAR);
+	BasAddCode(*p++ - 'A');
 
 	return p;
 }

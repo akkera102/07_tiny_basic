@@ -15,10 +15,10 @@ extern "C" {
 #define BAS_CODE_SP			0x20
 #define BAS_CODE_ESC		0x1b
 
-#define BAS_SIZE_LINE		60
-#define BAS_SIZE_CODE		60
+#define BAS_SIZE_LINE		50
+#define BAS_SIZE_CODE		50
 #define BAS_SIZE_LIST		300
-#define BAS_SIZE_ARRAY		30
+#define BAS_SIZE_ARRAY		20
 #define BAS_SIZE_VAR		26
 #define BAS_SIZE_GOSUB		6
 #define BAS_SIZE_FOR		15
@@ -122,8 +122,8 @@ typedef struct {
 	u8*  pCur;							// Pointer current
 	u8*  pLine;							// Pointer current line
 
-	s8   var[BAS_SIZE_VAR];
-	s8   array[BAS_SIZE_ARRAY];
+	s16  var[BAS_SIZE_VAR];
+	s16  array[BAS_SIZE_ARRAY];
 
 	s8   forIdx;
 	u8*  forStack[BAS_SIZE_FOR];
@@ -200,6 +200,7 @@ void BasAddCode2(u8* p, s16 len);
 u8*  BasAddCodeCmd(u8* p);
 u8*  BasAddCodeNum(u8* p);
 u8*  BasAddCodeStr(u8* p);
+u8*  BasAddCodeVar(u8* p);
 
 u8*  BasGetListPointer(s16 lineno);
 s16  BasGetLineNo(u8* p);

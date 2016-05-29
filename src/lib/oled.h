@@ -45,7 +45,7 @@ void OledDisplay(void);
 void OledDrawStr(u8 fx, u8 fy, const char* fmt, ...);
 void OledDrawStrP(u8 fx, u8 fy, const char* s);
 void OledDrawChr(u8 fx, u8 fy, char chr);
-void OledDrawDot(u8 x, u8 y);
+void OledDrawDot(u8 x, u8 y, u8 col);
 void OledDrawCls(void);
 
 void OledDrawBmp(s8 sx, s8 sy, u8* p);

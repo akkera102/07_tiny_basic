@@ -3,7 +3,7 @@
 #include <avr/sleep.h>
 #include "frame.h"
 // #include "snd.h"
-#include "key.h"
+// #include "key.h"
 #include "oled.h"
 // #include "eep.h"
 // #include "math.h"
@@ -23,7 +23,7 @@ void SysInit(void)
 	FrameInit();
 //	SndInit();
 //	EepInit();
-	KeyInit();
+//	KeyInit();
 //	MathInit();
 	RndInit();
 //	DebugInit();
@@ -42,7 +42,7 @@ bool SysLoop(void)
 		return FALSE;
 	}
 
-	KeyLoop();
+//	KeyLoop();
 	return TRUE;
 }
 //---------------------------------------------------------------------------

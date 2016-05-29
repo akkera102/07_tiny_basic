@@ -128,14 +128,21 @@ void OledDrawChr(u8 fx, u8 fy, char chr)
 	}
 }
 //---------------------------------------------------------------------------
-void OledDrawDot(u8 x, u8 y)
+void OledDrawDot(u8 x, u8 y, u8 col)
 {
 	if(x >= OLED_SCREEN_CX || y >= OLED_SCREEN_CY)
 	{
 		return;
 	}
 
-	Oled.buf[x + (y / 8) * OLED_SCREEN_CX] |= _BV(y % 8);
+	if(col)
+	{
+		Oled.buf[x + (y / 8) * OLED_SCREEN_CX] |=  _BV(y % 8);
+	}
+	else
+	{
+		Oled.buf[x + (y / 8) * OLED_SCREEN_CX] &= ~_BV(y % 8);
+	}
 }
 //---------------------------------------------------------------------------
 void OledDrawCls(void)
