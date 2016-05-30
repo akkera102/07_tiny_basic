@@ -34,6 +34,10 @@ image converter : python 2.6 + PIL
 etc             : Visual Studio 2015 C#
 
 
+## License
+GNU General Public License
+
+
 ## History
 v1.01 2016/05/29    fix RUN, REM, RND, NEW, PSET, SIZE.
                     fix input bug after RUN.
@@ -49,8 +53,8 @@ AVR Memory Usage
 ----------------
 Device: atmega32u4
 
-Program:   15444 bytes (47.1% Full)
+Program:   15414 bytes (47.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1798 bytes (70.2% Full)
+Data:       1809 bytes (70.7% Full)
 (.data + .bss + .noinit)
