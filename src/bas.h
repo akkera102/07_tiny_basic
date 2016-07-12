@@ -184,7 +184,6 @@ bool BasSerialIsAvailable(void);
 
 bool BasIsNoSpaceAfter(u8 code);
 bool BasIsNoSpaceBefore(u8 code);
-bool BasIsCodeBuf(u8 len);
 bool BasIsPrint(u8 c);
 bool BasIsSpace(u8 c);
 bool BasIsToupper(u8 c);

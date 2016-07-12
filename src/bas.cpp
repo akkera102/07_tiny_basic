@@ -1513,11 +1513,6 @@ bool BasIsNoSpaceBefore(u8 code)
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-bool BasIsCodeBuf(u8 len)
-{
-	return (Bas.codeLen + len >= BAS_SIZE_CODE) ? TRUE : FALSE;
-}
-//---------------------------------------------------------------------------
 bool BasIsPrint(u8 c)
 {
 	return (c >= 0x20 && c <= 0x7e) ? TRUE : FALSE;

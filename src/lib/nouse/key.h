@@ -47,8 +47,8 @@ enum {
 
 #elif defined(ARDUBOY_DEVKIT)
 
-	KEY_A = _BV(0),
-	KEY_B = _BV(1),
+	KEY_A = _BV(1),
+	KEY_B = _BV(0),
 	KEY_R = _BV(2),
 	KEY_U = _BV(4),
 	KEY_L = _BV(5),
