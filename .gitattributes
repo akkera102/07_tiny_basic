@@ -1,4 +1,5 @@
 * text eol=crlf
+*.sh eol=lf
 
 *.bmp binary
 *.exe binary
