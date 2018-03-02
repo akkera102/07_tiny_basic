@@ -35,7 +35,7 @@ etc             : Visual Studio 2015 C#
 
 
 ## License
-GNU General Public License
+GPL v2
 
 
 ## History
