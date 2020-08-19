@@ -1,8 +1,8 @@
 MAKEFLAGS	+=--no-print-directory
 
-BINPATH			= "C:/Program Files/Arduino/hardware/tools/avr/bin/"
-CONFFILE		= "C:/Program Files/Arduino/hardware/tools/avr/etc/avrdude.conf"
-COM				= COM9
+BINPATH			= "C:/Program Files (x86)/Arduino/hardware/tools/avr/bin/"
+CONFFILE		= "C:/Program Files (x86)/Arduino/hardware/tools/avr/etc/avrdude.conf"
+COM				= COM3
 
 ARDUBOY_MODEL	= ARDUBOY_10
 #ARDUBOY_MODEL	= ARDUBOY_DEVKIT

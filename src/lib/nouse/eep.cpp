@@ -19,7 +19,7 @@ void EepSeek(u16 adr)
 u8 EepRead8(void)
 {
 	eeprom_busy_wait();
-	return eeprom_read_byte(Eep.adr++);
+	return eeprom_read_byte(EEP_START_OFFSET + Eep.adr++);
 }
 //---------------------------------------------------------------------------
 u16 EepRead16(void)
@@ -47,7 +47,7 @@ u32 EepRead32(void)
 void EepWrite8(u8 dat)
 {
 	eeprom_busy_wait();
-	eeprom_write_byte(Eep.adr++, dat);
+	eeprom_write_byte(EEP_START_OFFSET + Eep.adr++, dat);
 }
 //---------------------------------------------------------------------------
 void EepWrite16(u16 dat)
